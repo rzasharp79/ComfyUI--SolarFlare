@@ -1,0 +1,147 @@
+{
+  "type": "object",
+  "title": "Qwen Image",
+  "category": "🌅SolarFlare/Replicate/Image Generation",
+  "required": [
+    "prompt"
+  ],
+  "properties": {
+    "seed": {
+      "type": "integer",
+      "title": "Seed",
+      "x-order": 13,
+      "nullable": true,
+      "description": "Random seed. Set for reproducible generation"
+    },
+    "image": {
+      "type": "string",
+      "title": "Image",
+      "format": "uri",
+      "x-order": 5,
+      "description": "Input image for img2img pipeline"
+    },
+    "prompt": {
+      "type": "string",
+      "title": "Prompt",
+      "x-order": 0,
+      "description": "Prompt for generated image"
+    },
+    "go_fast": {
+      "type": "boolean",
+      "title": "Go Fast",
+      "default": true,
+      "x-order": 10,
+      "description": "Run faster predictions with additional optimizations."
+    },
+    "guidance": {
+      "type": "number",
+      "title": "Guidance",
+      "default": 3,
+      "maximum": 10,
+      "minimum": 0,
+      "x-order": 12,
+      "description": "Guidance for generated image. Lower values can give more realistic images. Good values to try are 2, 2.5, 3 and 3.5"
+    },
+    "strength": {
+      "type": "number",
+      "title": "Strength",
+      "default": 0.9,
+      "maximum": 1,
+      "minimum": 0,
+      "x-order": 6,
+      "description": "Strength for img2img pipeline"
+    },
+    "image_size": {
+      "enum": [
+        "optimize_for_quality",
+        "optimize_for_speed"
+      ],
+      "type": "string",
+      "title": "image_size",
+      "description": "Image size for the generated image",
+      "default": "optimize_for_quality",
+      "x-order": 9
+    },
+    "lora_scale": {
+      "type": "number",
+      "title": "Lora Scale",
+      "default": 1,
+      "x-order": 4,
+      "description": "Determines how strongly the main LoRA should be applied."
+    },
+    "aspect_ratio": {
+      "enum": [
+        "1:1",
+        "16:9",
+        "9:16",
+        "4:3",
+        "3:4",
+        "3:2",
+        "2:3"
+      ],
+      "type": "string",
+      "title": "aspect_ratio",
+      "description": "Aspect ratio for the generated image",
+      "default": "16:9",
+      "x-order": 8
+    },
+    "lora_weights": {
+      "type": "string",
+      "title": "Lora Weights",
+      "x-order": 2,
+      "nullable": true,
+      "description": "Load LoRA weights. Only works with text to image pipeline. Supports arbitrary .safetensors URLs, tar files, and zip files from the Internet (for example, 'https://huggingface.co/Viktor1717/scandinavian-interior-style1/resolve/main/my_first_flux_lora_v1.safetensors', 'https://example.com/lora_weights.tar.gz', or 'https://example.com/lora_weights.zip')"
+    },
+    "output_format": {
+      "enum": [
+        "webp",
+        "jpg",
+        "png"
+      ],
+      "type": "string",
+      "title": "output_format",
+      "description": "Format of the output images",
+      "default": "webp",
+      "x-order": 14
+    },
+    "enhance_prompt": {
+      "type": "boolean",
+      "title": "Enhance Prompt",
+      "default": false,
+      "x-order": 1,
+      "description": "Enhance the prompt with positive magic."
+    },
+    "output_quality": {
+      "type": "integer",
+      "title": "Output Quality",
+      "default": 80,
+      "maximum": 100,
+      "minimum": 0,
+      "x-order": 15,
+      "description": "Quality when saving the output images, from 0 to 100. 100 is best quality, 0 is lowest quality. Not relevant for .png outputs"
+    },
+    "negative_prompt": {
+      "type": "string",
+      "title": "Negative Prompt",
+      "default": " ",
+      "x-order": 7,
+      "description": "Negative prompt for generated image"
+    },
+    "num_inference_steps": {
+      "type": "integer",
+      "title": "Num Inference Steps",
+      "default": 30,
+      "maximum": 50,
+      "minimum": 1,
+      "x-order": 11,
+      "description": "Number of denoising steps. Recommended range is 28-50, and lower number of steps produce lower quality outputs, faster."
+    },
+    "disable_safety_checker": {
+      "type": "boolean",
+      "title": "Disable Safety Checker",
+      "default": false,
+      "x-order": 16,
+      "description": "Disable safety checker for generated images."
+    }
+  }
+}
